@@ -70,9 +70,40 @@ public class ListaSimplesmenteEncadeada {
 
     //public boolean contains(int o){    } <-1
 
-    //public int get(int index){    } <- 1
+    public int get(int index){
+        if(index < 0 || index >= nNodos){
+            throw new IndexOutOfBoundsException("indice invalido");
+        }
+        Nodo aux = head;
+        int cont = 0;
+        while(index != cont){
+            aux = aux.proximo;
+            cont++;
+        }
+        return aux.valor;
+    }
+    
 
-    //public int indexOf(int o){    } <- 1
+    public int indexOf(int o){    
+        int cont=0;
+        /*
+        Nodo johnyWalker = this.head;
+        while (johnyWalker!=null) {
+            if(johnyWalker.valor == o)
+                 return cont;
+            johnyWalker=johnyWalker.proximo;
+            cont++;
+        }
+        */
+        for(Nodo johnyWalker=this.head; // inicialização
+            johnyWalker!=null;          // condição de permanenia
+            johnyWalker=johnyWalker.proximo, cont++){ // atualização das variaveis de controle
+
+            if(johnyWalker.valor==o)
+                return cont;
+        }
+        return -1;
+    }
 
     public boolean isEmpty(){
         //return (this.tail==null);
